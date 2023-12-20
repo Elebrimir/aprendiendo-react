@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-export function TwitterFollowCard({ userName, children }) {
-  const [isFollowing, setIsFollowing] = useState(false);
+// eslint-disable-next-line react/prop-types
+export function TwitterFollowCard({ userName, children, initialIsFollowing }) {
+  const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
 
   const text = isFollowing ? "Siguiendo" : "Seguir";
   const buttonClassName = isFollowing
@@ -28,7 +29,8 @@ export function TwitterFollowCard({ userName, children }) {
 
       <aside>
         <button className={buttonClassName} onClick={handleClick}>
-          {text}
+          <span className="tw-followCard-text">{text}</span>
+          <span className="tw-followCard-stopFollow">Dejar de Seguir</span>
         </button>
       </aside>
     </article>
